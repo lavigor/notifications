@@ -1,0 +1,86 @@
+.push-notify {
+	display: inline-block;
+	padding: 5px 0;
+	cursor: pointer;
+}
+
+.dropdown-contents .push-notify {
+	display: block;
+	text-align: center;
+}
+
+.push-notify .push-toggle {
+	display: inline-block;
+	position: relative;
+	background-color: #c74564;
+	border: 1px solid #757575;
+	border-radius: 15px;
+	width: 45px;
+	height: 14px;
+	line-height: 24px;
+	margin: 5px 7px;
+	vertical-align: top;
+	box-shadow: 0 1px 2px #373737 inset;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+.push-notify.push-toggle-enabled .push-toggle {
+	background-color: #35a035;
+}
+
+.push-notify .push-toggle span {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -1px;
+	border-radius: 200%;
+	border: 1px solid #757575;
+	background-color: #fff;
+	width: 20px;
+	height: 20px;
+	margin-top: -4px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.push-notify.push-toggle-enabled .push-toggle span {
+	left: 25px;
+}
+
+.push-notify:hover .push-toggle span {
+	background-color: #fdfcd3;
+}
+
+.push-notify.push-toggle-locked {
+	cursor: auto;
+}
+
+.push-notify.push-toggle-locked .push-toggle {
+	background-color: #a8a8a8;
+}
+
+.push-notify.push-toggle-locked .push-toggle span {
+	background-color: #e0e0e0;
+}
+
+.push-notify .push-notify-status {
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 14px;
+	padding-top: 6px;
+	vertical-align: top;
+}
+
+.push-notify > span:first-of-type {
+	display: inline-block;
+	font-size: 12px;
+	line-height: 14px;
+	padding-top: 5px;
+	vertical-align: top;
+}

@@ -1,0 +1,11 @@
+lavigor_notifications_subscribe:
+    path: /notifications/browser/subscribe
+    defaults: { _controller: lavigor.notifications.controller:subscribe }
+
+lavigor_notifications_unsubscribe:
+    path: /notifications/browser/unsubscribe
+    defaults: { _controller: lavigor.notifications.controller:unsubscribe }
+
+lavigor_notifications_test:
+    path: /notifications/browser/test
+    defaults: { _controller: lavigor.notifications.controller:test }
