@@ -25,6 +25,25 @@ namespace lavigor\notifications;
 class ext extends \phpbb\extension\base
 {
 	/**
+	 * Check whether or not the extension can be enabled.
+	 *
+	 * Requirements for versions 1.0.x:
+	 * PHP >= 5.6, < 7.2 (PHP 7 is not supported by phpBB 3.1 however)
+	 * phpBB 3.1.x
+	 * PHP extensions: GMP and OpenSSL
+	 *
+	 * @return bool
+	 */
+	public function is_enableable()
+	{
+		return phpbb_version_compare(PHP_VERSION, '5.6.0', '>=') &&
+			phpbb_version_compare(PHP_VERSION, '7.2.0', '<') &&
+			phpbb_version_compare(PHPBB_VERSION, '3.1.0', '>=') &&
+			phpbb_version_compare(PHPBB_VERSION, '3.2.0', '<') &&
+			extension_loaded('gmp') && extension_loaded('openssl');
+	}
+
+	/**
 	 * Overwrite enable_step to enable notifications
 	 * before any included migrations are installed.
 	 *
