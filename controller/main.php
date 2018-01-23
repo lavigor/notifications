@@ -54,6 +54,11 @@ class main
 		$this->subscriptions_table = $subscriptions_table;
 	}
 
+	/**
+	 * Saves current browser's subscription to board's database
+	 *
+	 * @return JsonResponse
+	 */
 	public function subscribe()
 	{
 		if (!$this->request->is_ajax())
@@ -74,11 +79,7 @@ class main
 
 		$subscription = new subscription($this->user, $this->db, $this->subscriptions_table);
 
-		$old_id = $this->request->variable('subscription_id', 0);
-		if ($old_id)
-		{
-			$subscription->remove_by_id($old_id);
-		}
+		$this->remove_old_subscription($subscription);
 
 		$subscription
 			->set_endpoint($endpoint)
@@ -94,6 +95,11 @@ class main
 		]);
 	}
 
+	/**
+	 * Removes current browser's subscription from board's database
+	 *
+	 * @return JsonResponse
+	 */
 	public function unsubscribe()
 	{
 		if (!$this->request->is_ajax())
@@ -114,6 +120,27 @@ class main
 		]);
 	}
 
+	/**
+	 * Remove old subscription with the same ID as requested
+	 * Used in case of re-subscription from Service Worker
+	 *
+	 * @param subscription $subscription Subscription object
+	 */
+	protected function remove_old_subscription($subscription)
+	{
+		$old_id = $this->request->variable('subscription_id', 0);
+		if ($old_id)
+		{
+			$subscription->remove_by_id($old_id);
+		}
+	}
+
+	/**
+	 * Checks whether the current subscription attempt does not
+	 * make the allowed limit of number of browsers exceeded
+	 *
+	 * @return bool
+	 */
 	protected function check_browsers_limit_reached()
 	{
 		if ($this->config['push_max_browsers'] < 1)
@@ -135,6 +162,13 @@ class main
 		return $browsers_number >= $this->config['push_max_browsers'];
 	}
 
+	/**
+	 * Enables every type of Push notifications when the user subscribes
+	 * to them for the first time
+	 *
+	 * @deprecated This function is needed for phpBB 3.1 boards only
+	 * @return bool
+	 */
 	protected function set_default_subscription()
 	{
 		$sql = $this->db->sql_build_query('SELECT', [
