@@ -257,9 +257,10 @@ class browser extends \phpbb\notification\method\base
 	 * Handles errors from Push notification servers
 	 * Removes expired subscriptions when needed
 	 *
-	 * @param array $results Array of information for each sent notification
+	 * @param array|bool $results Array of information for each sent notification
+	 *                            (or bool in case of no errors)
 	 */
-	protected function handle_errors(array $results)
+	protected function handle_errors($results)
 	{
 		if (!is_array($results))
 		{
