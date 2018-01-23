@@ -47,7 +47,7 @@ install:
   - travis/prepare-phpbb.sh $EXTNAME $PHPBB_BRANCH
   - cd ../../phpBB3
   - travis/prepare-extension.sh $EXTNAME $PHPBB_BRANCH
-  - sh -c "if [ '$NOTESTS' = '1' ]; then travis/setup-phpbb.sh $DB '5.3.3'; else travis/setup-phpbb.sh $DB $TRAVIS_PHP_VERSION; fi"
+  - travis/setup-phpbb.sh $DB $TRAVIS_PHP_VERSION
 
 before_script:
   - travis/setup-database.sh $DB $TRAVIS_PHP_VERSION
