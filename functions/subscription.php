@@ -41,12 +41,24 @@ class subscription
 		$this->subscriptions_table = $subscriptions_table;
 	}
 
+	/**
+	 * Sets subscription's endpoint
+	 *
+	 * @param string $endpoint New value for endpoint
+	 * @return $this
+	 */
 	public function set_endpoint($endpoint)
 	{
 		$this->endpoint = $endpoint;
 		return $this;
 	}
 
+	/**
+	 * Sets subscription's keys
+	 *
+	 * @param array $keys Array with new values to keys 'auth' and 'p256dh'
+	 * @return $this
+	 */
 	public function set_keys(array $keys)
 	{
 		$this->push_key_auth = $keys['auth'];
@@ -54,11 +66,21 @@ class subscription
 		return $this;
 	}
 
+	/**
+	 * Gets current subscription ID
+	 *
+	 * @return int
+	 */
 	public function get_id()
 	{
 		return $this->subscription_id;
 	}
 
+	/**
+	 * Builds WHERE statement for SQL Query for current subscription
+	 *
+	 * @return string
+	 */
 	private function build_where_statement()
 	{
 		return ((isset($this->push_key_auth)) ? '
@@ -69,6 +91,11 @@ class subscription
 				user_id         = ' . (int) $this->user->data['user_id'];
 	}
 
+	/**
+	 * Checks whether current subscription exists in the database
+	 *
+	 * @return bool
+	 */
 	public function exists()
 	{
 		$sql = $this->db->sql_build_query('SELECT', [
@@ -85,6 +112,9 @@ class subscription
 		return !empty($row);
 	}
 
+	/**
+	 * Submits current subscription to the database if it does not exist there yet
+	 */
 	public function submit()
 	{
 		if ($this->exists())
@@ -101,6 +131,9 @@ class subscription
 		$this->subscription_id = $this->db->sql_nextid();
 	}
 
+	/**
+	 * Removes current subscription from the database
+	 */
 	public function remove()
 	{
 		$sql = 'DELETE FROM ' . $this->subscriptions_table . '
@@ -108,7 +141,9 @@ class subscription
 		$this->db->sql_query($sql);
 	}
 
-
+	/**
+	 * Removes any subscriptions with the specified endpoint from the database
+	 */
 	public function remove_by_endpoint()
 	{
 		$sql = 'DELETE FROM ' . $this->subscriptions_table . '
@@ -116,13 +151,23 @@ class subscription
 		$this->db->sql_query($sql);
 	}
 
+	/**
+	 * Removes the subscription with the specified ID from the database
+	 */
 	public function remove_by_id($id)
 	{
 		$sql = 'DELETE FROM ' . $this->subscriptions_table . '
-				WHERE subscription_id = \'' . (int) $id . '\'';
+				WHERE subscription_id = ' . (int) $id;
 		$this->db->sql_query($sql);
 	}
 
+	/**
+	 * Sets up a Push notification to be sent for current subscription
+	 *
+	 * @param WebPush $WebPush           WebPush object
+	 * @param array   $notification_data Array with notification's data
+	 * @param int     $ttl               Notification's Time To Live (in seconds)
+	 */
 	public function prepare_notification(WebPush $WebPush, array $notification_data, $ttl = 0)
 	{
 		$WebPush->sendNotification(
