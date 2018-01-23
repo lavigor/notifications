@@ -31,15 +31,6 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\request\request */
 	protected $request;
 
-	/**
-	 * Constructor
-	 *
-	 * @param \phpbb\auth\auth         $auth
-	 * @param \phpbb\config\config     $config
-	 * @param \phpbb\template\template $template
-	 * @param \phpbb\language\language $language
-	 * @param \phpbb\request\request   $request
-	 */
 	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\language\language $language, \phpbb\request\request $request)
 	{
 		$this->auth = $auth;
@@ -64,7 +55,7 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * Load language file for notifications.
+	 * Load language file for notifications
 	 *
 	 * @param object $event The event object
 	 */
@@ -79,7 +70,7 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * Load parameters for notifications.
+	 * Load parameters for notifications
 	 *
 	 * @param object $event The event object
 	 */
@@ -92,9 +83,8 @@ class listener implements EventSubscriberInterface
 		));
 	}
 
-
 	/**
-	 * Add configuration option.
+	 * Add configuration options
 	 *
 	 * @param object $event The event object
 	 */
