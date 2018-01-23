@@ -284,117 +284,6 @@
         ]
     },
     {
-        "name": "paragonie/random_compat",
-        "version": "v2.0.11",
-        "version_normalized": "2.0.11.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/paragonie/random_compat.git",
-            "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/5da4d3c796c275c55f057af5a643ae297d96b4d8",
-            "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.*|5.*"
-        },
-        "suggest": {
-            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-        },
-        "time": "2017-09-27T21:40:39+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/random.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Paragon Initiative Enterprises",
-                "email": "security@paragonie.com",
-                "homepage": "https://paragonie.com"
-            }
-        ],
-        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-        "keywords": [
-            "csprng",
-            "pseudorandom",
-            "random"
-        ]
-    },
-    {
-        "name": "symfony/polyfill-php70",
-        "version": "v1.6.0",
-        "version_normalized": "1.6.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/polyfill-php70.git",
-            "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff",
-            "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff",
-            "shasum": ""
-        },
-        "require": {
-            "paragonie/random_compat": "~1.0|~2.0",
-            "php": ">=5.3.3"
-        },
-        "time": "2017-10-11T12:05:26+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Polyfill\\Php70\\": ""
-            },
-            "files": [
-                "bootstrap.php"
-            ],
-            "classmap": [
-                "Resources/stubs"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "compatibility",
-            "polyfill",
-            "portable",
-            "shim"
-        ]
-    },
-    {
         "name": "spomky-labs/aes-key-wrap",
         "version": "v3.0.3",
         "version_normalized": "3.0.3.0",
@@ -454,229 +343,6 @@
             "key",
             "padding",
             "wrap"
-        ]
-    },
-    {
-        "name": "fgrosse/phpasn1",
-        "version": "1.5.3",
-        "version_normalized": "1.5.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fgrosse/PHPASN1.git",
-            "reference": "40244500384f8b96f5952076f3e05fb56a815c55"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fgrosse/PHPASN1/zipball/40244500384f8b96f5952076f3e05fb56a815c55",
-            "reference": "40244500384f8b96f5952076f3e05fb56a815c55",
-            "shasum": ""
-        },
-        "require": {
-            "ext-gmp": "*",
-            "php": ">=5.6.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.5",
-            "satooshi/php-coveralls": "dev-master"
-        },
-        "suggest": {
-            "php-curl": "For loading OID information from the web if they have not bee defined statically"
-        },
-        "time": "2017-12-17T10:18:20+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.5.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "FG\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Friedrich Große",
-                "email": "friedrich.grosse@gmail.com",
-                "homepage": "https://github.com/FGrosse",
-                "role": "Author"
-            },
-            {
-                "name": "All contributors",
-                "homepage": "https://github.com/FGrosse/PHPASN1/contributors"
-            }
-        ],
-        "description": "A PHP Framework that allows you to encode and decode arbitrary ASN.1 structures using the ITU-T X.690 Encoding Rules.",
-        "homepage": "https://github.com/FGrosse/PHPASN1",
-        "keywords": [
-            "DER",
-            "asn.1",
-            "asn1",
-            "ber",
-            "binary",
-            "decoding",
-            "encoding",
-            "x.509",
-            "x.690",
-            "x509",
-            "x690"
-        ]
-    },
-    {
-        "name": "mdanter/ecc",
-        "version": "v0.4.5",
-        "version_normalized": "0.4.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phpecc/phpecc.git",
-            "reference": "9ed6017fbae2fd1105e0d81e703007d353b7587b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phpecc/phpecc/zipball/9ed6017fbae2fd1105e0d81e703007d353b7587b",
-            "reference": "9ed6017fbae2fd1105e0d81e703007d353b7587b",
-            "shasum": ""
-        },
-        "require": {
-            "ext-gmp": "*",
-            "fgrosse/phpasn1": "~1.5",
-            "paragonie/random_compat": "^1|^2",
-            "php": ">=5.6.0, <7.2"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.1|~5.0",
-            "squizlabs/php_codesniffer": "~2",
-            "symfony/yaml": "~2.6|~3.0"
-        },
-        "time": "2017-12-12T12:13:30+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Mdanter\\Ecc\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Matyas Danter",
-                "homepage": "http://matejdanter.com/",
-                "role": "Author"
-            },
-            {
-                "name": "Thibaud Fabre",
-                "email": "thibaud@aztech.io",
-                "homepage": "http://aztech.io",
-                "role": "Maintainer"
-            }
-        ],
-        "description": "PHP Elliptic Curve Cryptography library",
-        "homepage": "https://github.com/phpecc/phpecc",
-        "keywords": [
-            "Diffie",
-            "ECDSA",
-            "Hellman",
-            "curve",
-            "ecdh",
-            "elliptic",
-            "nistp192",
-            "nistp224",
-            "nistp256",
-            "nistp521",
-            "phpecc",
-            "secp256k1"
-        ]
-    },
-    {
-        "name": "spomky-labs/jose",
-        "version": "v6.1.6",
-        "version_normalized": "6.1.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Spomky-Labs/jose.git",
-            "reference": "c044dd9bac4a827ef837b81f124256c84a5b4c6e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Spomky-Labs/jose/zipball/c044dd9bac4a827ef837b81f124256c84a5b4c6e",
-            "reference": "c044dd9bac4a827ef837b81f124256c84a5b4c6e",
-            "shasum": ""
-        },
-        "require": {
-            "beberlei/assert": "^2.4",
-            "fgrosse/phpasn1": "^1.5",
-            "lib-openssl": "*",
-            "mdanter/ecc": "0.4.*",
-            "php": "^5.6|^7.0",
-            "psr/cache": "^1.0",
-            "spomky-labs/aes-key-wrap": "^3.0",
-            "spomky-labs/base64url": "^1.0",
-            "spomky-labs/php-aes-gcm": "^1.2",
-            "symfony/polyfill-mbstring": "^1.1",
-            "symfony/polyfill-php70": "^1.1"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^5.0",
-            "satooshi/php-coveralls": "^1.0",
-            "symfony/cache": "^2.0|^3.0"
-        },
-        "suggest": {
-            "ext-crypto": "Highly recommended when you use AES GCM based algorithms.",
-            "ext-curve25519": "For EdDSA with X25519 curves support.",
-            "ext-ed25519": "For EdDSA with Ed25519 curves support."
-        },
-        "time": "2017-10-06T06:25:14+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "6.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Jose\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Florent Morselli",
-                "homepage": "https://github.com/Spomky"
-            },
-            {
-                "name": "All contributors",
-                "homepage": "https://github.com/Spomky-Labs/jose/contributors"
-            }
-        ],
-        "description": "JSON Object Signing and Encryption library for PHP.",
-        "homepage": "https://github.com/Spomky-Labs/Jose",
-        "keywords": [
-            "JOSE",
-            "JWE",
-            "JWK",
-            "JWKSet",
-            "JWS",
-            "Jot",
-            "RFC7515",
-            "RFC7516",
-            "RFC7517",
-            "RFC7518",
-            "RFC7519",
-            "RFC7520",
-            "jwa",
-            "jwt"
         ]
     },
     {
@@ -919,33 +585,261 @@
         ]
     },
     {
-        "name": "minishlink/web-push",
-        "version": "v1.4.3",
-        "version_normalized": "1.4.3.0",
+        "name": "fgrosse/phpasn1",
+        "version": "2.0.1",
+        "version_normalized": "2.0.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/web-push-libs/web-push-php.git",
-            "reference": "65fcd80fccecc29a4df7fbf47c3fbc9558e07d94"
+            "url": "https://github.com/fgrosse/PHPASN1.git",
+            "reference": "0e27e71e3d0a8d5c3f1471d727fd9574d920f33c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/web-push-libs/web-push-php/zipball/65fcd80fccecc29a4df7fbf47c3fbc9558e07d94",
-            "reference": "65fcd80fccecc29a4df7fbf47c3fbc9558e07d94",
+            "url": "https://api.github.com/repos/fgrosse/PHPASN1/zipball/0e27e71e3d0a8d5c3f1471d727fd9574d920f33c",
+            "reference": "0e27e71e3d0a8d5c3f1471d727fd9574d920f33c",
+            "shasum": ""
+        },
+        "require": {
+            "ext-gmp": "*",
+            "php": ">=7.0.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~6.3",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "suggest": {
+            "php-curl": "For loading OID information from the web if they have not bee defined statically"
+        },
+        "time": "2017-12-17T10:21:51+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "FG\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Friedrich Große",
+                "email": "friedrich.grosse@gmail.com",
+                "homepage": "https://github.com/FGrosse",
+                "role": "Author"
+            },
+            {
+                "name": "All contributors",
+                "homepage": "https://github.com/FGrosse/PHPASN1/contributors"
+            }
+        ],
+        "description": "A PHP Framework that allows you to encode and decode arbitrary ASN.1 structures using the ITU-T X.690 Encoding Rules.",
+        "homepage": "https://github.com/FGrosse/PHPASN1",
+        "keywords": [
+            "DER",
+            "asn.1",
+            "asn1",
+            "ber",
+            "binary",
+            "decoding",
+            "encoding",
+            "x.509",
+            "x.690",
+            "x509",
+            "x690"
+        ]
+    },
+    {
+        "name": "mdanter/ecc",
+        "version": "v0.5.0",
+        "version_normalized": "0.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpecc/phpecc.git",
+            "reference": "ed5c6d496f5310de1b7071b8375fafa3559a1344"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpecc/phpecc/zipball/ed5c6d496f5310de1b7071b8375fafa3559a1344",
+            "reference": "ed5c6d496f5310de1b7071b8375fafa3559a1344",
+            "shasum": ""
+        },
+        "require": {
+            "ext-gmp": "*",
+            "fgrosse/phpasn1": "v2.0.x",
+            "php": ">=7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.0",
+            "squizlabs/php_codesniffer": "~2",
+            "symfony/yaml": "~2.6|~3.0"
+        },
+        "time": "2017-10-09T16:05:37+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Mdanter\\Ecc\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Matyas Danter",
+                "homepage": "http://matejdanter.com/",
+                "role": "Author"
+            },
+            {
+                "name": "Thibaud Fabre",
+                "email": "thibaud@aztech.io",
+                "homepage": "http://aztech.io",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Thomas Kerin",
+                "email": "afk11@users.noreply.github.com",
+                "role": "Maintainer"
+            }
+        ],
+        "description": "PHP Elliptic Curve Cryptography library",
+        "homepage": "https://github.com/phpecc/phpecc",
+        "keywords": [
+            "Diffie",
+            "ECDSA",
+            "Hellman",
+            "curve",
+            "ecdh",
+            "elliptic",
+            "nistp192",
+            "nistp224",
+            "nistp256",
+            "nistp384",
+            "nistp521",
+            "phpecc",
+            "secp256k1",
+            "secp256r1"
+        ]
+    },
+    {
+        "name": "spomky-labs/jose",
+        "version": "v7.0.0",
+        "version_normalized": "7.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Spomky-Labs/jose.git",
+            "reference": "8c99915d9302bf088cfa2e37c08e1479ba022101"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Spomky-Labs/jose/zipball/8c99915d9302bf088cfa2e37c08e1479ba022101",
+            "reference": "8c99915d9302bf088cfa2e37c08e1479ba022101",
+            "shasum": ""
+        },
+        "require": {
+            "beberlei/assert": "^2.4",
+            "fgrosse/phpasn1": "^2.0",
+            "lib-openssl": "*",
+            "mdanter/ecc": "0.5.*",
+            "php": "^7.0",
+            "psr/cache": "^1.0",
+            "spomky-labs/aes-key-wrap": "^3.0",
+            "spomky-labs/base64url": "^1.0",
+            "spomky-labs/php-aes-gcm": "^1.2",
+            "symfony/polyfill-mbstring": "^1.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.0",
+            "satooshi/php-coveralls": "^1.0",
+            "symfony/cache": "^2.0|^3.0"
+        },
+        "suggest": {
+            "ext-crypto": "Highly recommended when you use AES GCM based algorithms.",
+            "ext-curve25519": "For EdDSA with X25519 curves support.",
+            "ext-ed25519": "For EdDSA with Ed25519 curves support."
+        },
+        "time": "2017-10-11T19:55:27+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "6.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Jose\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Florent Morselli",
+                "homepage": "https://github.com/Spomky"
+            },
+            {
+                "name": "All contributors",
+                "homepage": "https://github.com/Spomky-Labs/jose/contributors"
+            }
+        ],
+        "description": "JSON Object Signing and Encryption library for PHP.",
+        "homepage": "https://github.com/Spomky-Labs/Jose",
+        "keywords": [
+            "JOSE",
+            "JWE",
+            "JWK",
+            "JWKSet",
+            "JWS",
+            "Jot",
+            "RFC7515",
+            "RFC7516",
+            "RFC7517",
+            "RFC7518",
+            "RFC7519",
+            "RFC7520",
+            "jwa",
+            "jwt"
+        ]
+    },
+    {
+        "name": "minishlink/web-push",
+        "version": "v2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/web-push-libs/web-push-php.git",
+            "reference": "6e1b88c46351ea3850cb1e9ae9565b8c61a58396"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/web-push-libs/web-push-php/zipball/6e1b88c46351ea3850cb1e9ae9565b8c61a58396",
+            "reference": "6e1b88c46351ea3850cb1e9ae9565b8c61a58396",
             "shasum": ""
         },
         "require": {
             "guzzlehttp/guzzle": "^6.2",
             "lib-openssl": "*",
-            "mdanter/ecc": "^0.4.0",
-            "php": "^5.6 || ^7.0",
+            "mdanter/ecc": "^0.5.0",
+            "php": "^7.0",
             "spomky-labs/base64url": "^1.0",
-            "spomky-labs/jose": "^6.0",
+            "spomky-labs/jose": "^7.0",
             "spomky-labs/php-aes-gcm": "^1.2"
         },
         "require-dev": {
             "phpunit/phpunit": "5.7.*"
         },
-        "time": "2017-06-28T19:03:40+00:00",
+        "time": "2017-11-22T20:04:25+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

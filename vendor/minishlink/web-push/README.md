@@ -9,13 +9,14 @@ the [Web Push protocol](https://tools.ietf.org/html/draft-thomson-webpush-protoc
 As it is standardized, you don't have to worry about what server type it relies on.
 
 ## Requirements
-* PHP 5.6
+* PHP 7.0+
   * gmp
   * mbstring
   * curl
   * openssl
 
-PHP 7.1 is recommended for better performance.
+PHP 7.1+ is recommended for better performance.
+For PHP 5.6 or HHVM compatibility, use the v1.x releases.
 
 ## Installation
 Use [composer](https://getcomposer.org/) to download and install the library and its dependencies.
@@ -76,7 +77,7 @@ $webPush->sendNotification(
 * Matthew Gaunt's [Web Push Book](https://web-push-book.gauntface.com) - a must read
 * Mozilla's [ServiceWorker Cookbooks](https://serviceworke.rs/push-payload_index_doc.html) (don't mind the `server.js` file: it should be replaced by your PHP server code with this library)
 * Google's [introduction to push notifications](https://developers.google.com/web/fundamentals/getting-started/push-notifications/) (as of 03-20-2016, it doesn't mention notifications with payload)
-* you may want to take a look at my own implementation: [sw.js](https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/web/service-worker.js) and [app.js](https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/app/Resources/public/js/app.js)
+* you may want to take a look at my own implementation: [sw.js](https://github.com/Minishlink/physbook/blob/9bfcc2bbf7311a5de4628eb8f3ae56b6c3e74067/web/service-worker.js) and [app.js](https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/app/Resources/public/js/app.js)
 
 ### Authentication (VAPID)
 Browsers need to verify your identity. A standard called VAPID can authenticate you for all browsers. You'll need to create and provide a public and private key for your server. These keys must be safely stored and should not change.
@@ -320,3 +321,6 @@ See [CONTRIBUTING.md](https://github.com/Minishlink/web-push/blob/master/CONTRIB
 
 ## License
 [MIT](https://github.com/Minishlink/web-push/blob/master/LICENSE)
+
+## Sponsors
+Thanks to [JetBrains](https://www.jetbrains.com/) for supporting the project through sponsoring some [All Products Packs](https://www.jetbrains.com/products.html) within their [Free Open Source License](https://www.jetbrains.com/buy/opensource/) program.

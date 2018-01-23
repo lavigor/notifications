@@ -27,8 +27,8 @@ class ext extends \phpbb\extension\base
 	/**
 	 * Check whether or not the extension can be enabled.
 	 *
-	 * Requirements for versions 1.1.x:
-	 * PHP >= 5.6, < 7.2
+	 * Requirements for versions 1.2.x:
+	 * PHP >= 7.0
 	 * phpBB >= 3.2.0
 	 * PHP extensions: GMP and OpenSSL
 	 *
@@ -36,8 +36,7 @@ class ext extends \phpbb\extension\base
 	 */
 	public function is_enableable()
 	{
-		return phpbb_version_compare(PHP_VERSION, '5.6.0', '>=') &&
-			phpbb_version_compare(PHP_VERSION, '7.2.0', '<') &&
+		return phpbb_version_compare(PHP_VERSION, '7.0.0', '>=') &&
 			phpbb_version_compare(PHPBB_VERSION, '3.2.0', '>=') &&
 			extension_loaded('gmp') && extension_loaded('openssl');
 	}

@@ -4,11 +4,13 @@ This extension adds a new notification type using Web Push Notifications API.
 
 ## Requirements
 * phpBB 3.2.0 or higher
-* PHP >=5.6.0, <7.2
+* PHP 7.0 or higher
 * PHP extensions enabled: [GMP](http://php.net/manual/en/book.gmp.php) and [OpenSSL](http://php.net/manual/en/book.openssl.php)
 * HTTPS enabled
 
 Push notifications will be delivered only in [supported browsers](https://caniuse.com/#feat=push-api). The list of supported browsers can be extended further without the need to reinstall or update the extension (not in the case of possible specification changes).
+
+Previous versions of the extension also support PHP 5.6 as well as phpBB 3.1.
 
 > Note: This extension can also be tested on localhost.
 
