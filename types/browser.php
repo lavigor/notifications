@@ -29,6 +29,9 @@ class browser extends \phpbb\notification\method\base
 	/** @var \phpbb\log\log_interface */
 	protected $log;
 
+	/** @var \phpbb\filesystem\filesystem_interface */
+	protected $filesystem;
+
 	/** @var string */
 	protected $phpbb_root_path;
 
@@ -41,18 +44,17 @@ class browser extends \phpbb\notification\method\base
 	/** @var array */
 	protected $user_subscriptions = [];
 
-	public function __construct(\phpbb\user_loader $user_loader, \phpbb\user $user, \phpbb\cache\driver\driver_interface $cache, \phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\log\log_interface $log, $phpbb_root_path, $php_ext, $subscriptions_table)
+	public function __construct(\phpbb\user_loader $user_loader, \phpbb\user $user, \phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\log\log_interface $log, \phpbb\filesystem\filesystem_interface $filesystem, $phpbb_root_path, $php_ext, $subscriptions_table)
 	{
 		$this->user_loader = $user_loader;
 		$this->user = $user;
 		$this->config = $config;
 		$this->db = $db;
 		$this->log = $log;
+		$this->filesystem = $filesystem;
 		$this->phpbb_root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
 		$this->subscriptions_table = $subscriptions_table;
-
-		parent::__construct($user_loader, $db, $cache, $user, $auth, $config, $phpbb_root_path, $php_ext);
 	}
 
 	/**
@@ -129,7 +131,13 @@ class browser extends \phpbb\notification\method\base
 		]);
 
 		// Fix for mobile Firefox
-		$WebPush->setAutomaticPadding(2000);
+		try
+		{
+			$WebPush->setAutomaticPadding(2000);
+		}
+		catch (\Exception $e)
+		{
+		}
 
 		// Time to go through the queue and send emails
 		/** @var \phpbb\notification\type\type_interface $notification */
@@ -147,12 +155,12 @@ class browser extends \phpbb\notification\method\base
 			$message = html_entity_decode(strip_tags($display_data['FORMATTED_TITLE'] . ' ' . $display_data['REFERENCE'] . $display_data['FORUM'] . $display_data['REASON']), ENT_COMPAT);
 
 			$this->prepare_push_notifications($WebPush, $notification->user_id, [
-				'title'     => $this->config['sitename'],
-				'message'   => $message,
-				'url'       => $this->make_clean_url(str_replace('&amp;', '&', $display_data['URL'])),
-				'time'      => $notification->notification_time,
-				'badge'		=> $this->config['push_badge_url'],
-				'avatar'    => $this->get_avatar_url($this->user->data['user_id']),
+				'title'   => $this->config['sitename'],
+				'message' => $message,
+				'url'     => $this->make_clean_url(str_replace('&amp;', '&', $display_data['URL'])),
+				'time'    => $notification->notification_time,
+				'badge'   => $this->config['push_badge_url'],
+				'avatar'  => $this->get_avatar_url($this->user->data['user_id']),
 			]);
 		}
 
@@ -215,8 +223,7 @@ class browser extends \phpbb\notification\method\base
 				$subscription = new subscription($this->user, $this->db, $this->subscriptions_table);
 				$subscription
 					->set_endpoint($res['endpoint'])
-					->remove_by_endpoint()
-				;
+					->remove_by_endpoint();
 			}
 			else if (isset($res['statusCode']))
 			{

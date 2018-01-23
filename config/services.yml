@@ -5,22 +5,21 @@ services:
             - '@auth'
             - '@config'
             - '@template'
-            - '@user'
+            - '@language'
             - '@request'
         tags:
             - { name: event.listener }
 
     lavigor.notifications.notification.method.browser:
         class: lavigor\notifications\types\browser
-        scope: prototype
+        shared: false
         arguments:
             - '@user_loader'
             - '@user'
-            - '@cache.driver'
-            - '@auth'
             - '@config'
             - '@dbal.conn'
             - '@log'
+            - '@filesystem'
             - '%core.root_path%'
             - '%core.php_ext%'
             - '%core.table_prefix%push_subscriptions'
@@ -35,14 +34,13 @@ services:
             - '@config'
             - '@controller.helper'
             - '@request'
-            - '@notification_manager'
             - '%core.php_ext%'
             - '%core.root_path%'
             - '%core.table_prefix%push_subscriptions'
 
     lavigor.notifications.subscription:
         class: lavigor\notifications\functions\subscription
-        scope: prototype
+        shared: false
         arguments:
             - '@user'
             - '@dbal.conn'

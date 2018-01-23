@@ -27,9 +27,9 @@ class ext extends \phpbb\extension\base
 	/**
 	 * Check whether or not the extension can be enabled.
 	 *
-	 * Requirements for versions 1.0.x:
-	 * PHP >= 5.6, < 7.2 (PHP 7 is not supported by phpBB 3.1 however)
-	 * phpBB 3.1.x
+	 * Requirements for versions 1.1.x:
+	 * PHP >= 5.6, < 7.2
+	 * phpBB >= 3.2.0
 	 * PHP extensions: GMP and OpenSSL
 	 *
 	 * @return bool
@@ -38,54 +38,8 @@ class ext extends \phpbb\extension\base
 	{
 		return phpbb_version_compare(PHP_VERSION, '5.6.0', '>=') &&
 			phpbb_version_compare(PHP_VERSION, '7.2.0', '<') &&
-			phpbb_version_compare(PHPBB_VERSION, '3.1.0', '>=') &&
-			phpbb_version_compare(PHPBB_VERSION, '3.2.0', '<') &&
+			phpbb_version_compare(PHPBB_VERSION, '3.2.0', '>=') &&
 			extension_loaded('gmp') && extension_loaded('openssl');
-	}
-
-	/**
-	 * Overwrite enable_step to enable notifications
-	 * before any included migrations are installed.
-	 *
-	 * @param mixed $old_state State returned by previous call of this method
-	 * @return mixed Returns false after last step, otherwise temporary state
-	 */
-	function enable_step($old_state)
-	{
-		switch ($old_state)
-		{
-			case '': // Empty means nothing has run yet
-				/** @var \phpbb\db\driver\driver_interface $db */
-				$db = $this->container->get('dbal.conn');
-
-				$sql = $db->sql_build_query('SELECT', [
-					'SELECT' => 'COUNT(*) as result',
-					'FROM'   => [
-						USER_NOTIFICATIONS_TABLE => 'n',
-					],
-					'WHERE'  => "method = 'lavigor.notifications.notification.method.browser'",
-				]);
-				$res = $db->sql_query($sql);
-				$row = $db->sql_fetchfield('result', 0, $res);
-				$db->sql_freeresult($res);
-
-				// Check whether the extension had been enabled before.
-				if (!empty($row))
-				{
-					// Restore disabled notifications.
-					$sql = 'UPDATE ' . USER_NOTIFICATIONS_TABLE . "
-						SET notify = 1
-						WHERE method = 'lavigor.notifications.notification.method.browser'";
-					$db->sql_query($sql);
-				}
-
-				return 'notifications';
-			break;
-			default:
-				// Run parent enable step method
-				return parent::enable_step($old_state);
-			break;
-		}
 	}
 
 	/**
@@ -102,13 +56,7 @@ class ext extends \phpbb\extension\base
 			case '': // Empty means nothing has run yet
 				/** @var \phpbb\db\driver\driver_interface $db */
 				$db = $this->container->get('dbal.conn');
-				$sql = 'DELETE FROM ' . USER_NOTIFICATIONS_TABLE . "
-						WHERE method = 'lavigor.notifications.notification.method.browser'
-						AND notify = 0";
-				$db->sql_query($sql);
-
-				$sql = 'UPDATE ' . USER_NOTIFICATIONS_TABLE . "
-						SET notify = 0
+				$sql = 'DELETE FROM ' . $this->container->getParameter('tables.user_notifications') . "
 						WHERE method = 'lavigor.notifications.notification.method.browser'
 						AND notify = 1";
 				$db->sql_query($sql);
@@ -135,7 +83,7 @@ class ext extends \phpbb\extension\base
 			case '': // Empty means nothing has run yet
 				/** @var \phpbb\db\driver\driver_interface $db */
 				$db = $this->container->get('dbal.conn');
-				$sql = 'DELETE FROM ' . USER_NOTIFICATIONS_TABLE . "
+				$sql = 'DELETE FROM ' . $this->container->getParameter('tables.user_notifications') . "
 						WHERE method = 'lavigor.notifications.notification.method.browser'";
 				$db->sql_query($sql);
 				return 'notifications';

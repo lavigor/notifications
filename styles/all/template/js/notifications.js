@@ -99,9 +99,6 @@
 					serverURL: pushNotifications.notificationsPath,
 					subscriptionID: res.id
 				});
-				if (res.subscribedToAll && pushNotifications.notificationsPage) {
-					$("input[name$='lavigor.notifications.notification.method.browser'][type='checkbox']").prop('checked', true);
-				}
 			},
 			cache: false
 		});

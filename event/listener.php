@@ -25,8 +25,8 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\template\template */
 	protected $template;
 
-	/** @var \phpbb\user */
-	protected $user;
+	/** @var \phpbb\language\language */
+	protected $language;
 
 	/** @var \phpbb\request\request */
 	protected $request;
@@ -37,15 +37,15 @@ class listener implements EventSubscriberInterface
 	 * @param \phpbb\auth\auth         $auth
 	 * @param \phpbb\config\config     $config
 	 * @param \phpbb\template\template $template
-	 * @param \phpbb\user              $user
+	 * @param \phpbb\language\language $language
 	 * @param \phpbb\request\request   $request
 	 */
-	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request)
+	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\language\language $language, \phpbb\request\request $request)
 	{
 		$this->auth = $auth;
 		$this->config = $config;
 		$this->template = $template;
-		$this->user = $user;
+		$this->language = $language;
 		$this->request = $request;
 	}
 
@@ -102,7 +102,7 @@ class listener implements EventSubscriberInterface
 	{
 		if ($event['mode'] == 'settings')
 		{
-			$this->user->add_lang_ext('lavigor/notifications', 'notifications_acp');
+			$this->language->add_lang('notifications_acp', 'lavigor/notifications');
 			$display_vars = $event['display_vars'];
 			/* We add a new legend, but we need to search for the last legend instead of hard-coding */
 			$submit_key = array_search('ACP_SUBMIT_CHANGES', $display_vars['vars']);
@@ -112,7 +112,7 @@ class listener implements EventSubscriberInterface
 				'push_dropdown_integration'            => array('lang' => 'BROWSER_NOTIFICATION_DROPDOWN', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => true),
 				'push_intro_confirmation'              => array('lang' => 'BROWSER_NOTIFICATION_INTRO', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => true),
 				'push_max_browsers'                    => array('lang' => 'BROWSER_NOTIFICATION_MAX_BROWSERS', 'validate' => 'int:0:9999999999', 'type' => 'number:0:9999999999', 'explain' => true),
-				'push_notification_ttl'                => array('lang' => 'BROWSER_NOTIFICATION_TTL', 'validate' => 'int:0:9999999999', 'type' => 'number:0:9999999999', 'explain' => true, 'append' => ' ' . $this->user->lang('SECONDS')),
+				'push_notification_ttl'                => array('lang' => 'BROWSER_NOTIFICATION_TTL', 'validate' => 'int:0:9999999999', 'type' => 'number:0:9999999999', 'explain' => true, 'append' => ' ' . $this->language->lang('SECONDS')),
 				'push_badge_url'                       => array('lang' => 'BROWSER_NOTIFICATION_BADGE_URL', 'validate' => 'string', 'type' => 'url:40:255', 'explain' => false),
 				'legend' . ($submit_legend_number + 1) => 'ACP_SUBMIT_CHANGES',
 			);
